@@ -37,3 +37,23 @@ const saveMessages = (name,emailid,message)=>{
 const getElementVal = (id) =>{
   return document.getElementById(id).Value;
 }
+document.addEventListener("DOMContentLoaded", () => {
+  let cartCount = 0;
+
+
+  const updateCartCount = () => {
+      const cartCounter = document.querySelector('.addnumber');
+      cartCounter.textContent = cartCount;
+  };
+
+  const addToCartButtons = document.querySelectorAll('.add-to-cart');
+  addToCartButtons.forEach(button => {
+      button.addEventListener('click', () => {
+          const productId = button.getAttribute('data-product-id');
+          console.log(`Product ID ${productId} added to cart.`);
+          cartCount += 1;
+          updateCartCount();
+          alert("Product added to cart!");
+      });
+  });
+});
